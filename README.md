@@ -1,108 +1,105 @@
-# Nexivion Backend 🚀
+Nexivion Backend 🚀
 
-Bu proje, **Nexivion** için geliştirilen FastAPI tabanlı backend altyapısıdır.  
-Amaç; ileride AI (Pydantic AI), ödeme sistemleri ve farklı projelerde tekrar
-kullanılabilecek sağlam bir backend temelini oluşturmaktır.
+Bu proje, Nexivion web sitesi ve ileride diğer projeler (mobil / AI servisleri) için
+FastAPI tabanlı backend altyapısı oluşturmak amacıyla başlatılmıştır.
 
----
+Amaç:
 
-## 🧱 Kullanılan Teknolojiler
+Temiz backend mimarisi öğrenmek
 
-- Python 3.9+
-- FastAPI
-- Pydantic
-- Uvicorn
-- Git & GitHub
+Schema (Pydantic) mantığını sindirmek
 
----
+İleride AI (Pydantic AI), ödeme ve gerçek veritabanı eklemeye hazır olmak
 
-## 📁 Proje Yapısı
+🧱 Kullanılan Teknolojiler
 
+Python 3.9+
+
+FastAPI
+
+Pydantic
+
+Uvicorn
+
+Git / GitHub
+
+📂 Proje Yapısı (Şu An)
 nexivion-backend/
 │
-├── main.py # Ana FastAPI uygulaması
-├── schemas/ # Pydantic schema'lar
-│ ├── init.py
-│ └── user.py # User schema
+├── main.py              # Ana FastAPI uygulaması
+├── schemas/             # Pydantic schema'lar
+│   ├── __init__.py
+│   └── user.py          # User schema
 │
-├── venv/ # Virtual environment (git'e girmez)
+├── venv/                # Virtual environment (git'e dahil değil)
 ├── .gitignore
 └── README.md
 
-
----
-
-## ▶️ Uygulamayı Çalıştırma
-
-### 1️⃣ Virtual environment aktif et
-```bash
-source venv/bin/activate
-```
-
-## 2️⃣ Server’ı başlat
-```bash
+▶️ Uygulamayı Çalıştırma
+# Virtual env aktifken
 uvicorn main:app --reload
-```
+
+
 Tarayıcıdan:
 
-- http://127.0.0.1:8000
+Ana endpoint:
+👉 http://127.0.0.1:8000
 
-- http://127.0.0.1:8000/docs
+Swagger (dokümantasyon):
+👉 http://127.0.0.1:8000/docs
 
-## 🔗 Endpoint’ler
+🔗 Mevcut Endpoint’ler
+GET /users
 
-🔹 GET /
+Tüm kullanıcıları listeler.
 
-Sağlık kontrolü
+Örnek çıktı:
 
-Response:
-```bash
-{
-  "status": "ok"
-}
-
-```
-
-## 🔹 GET /users
-
-Kayıtlı kullanıcıları listeler
-
-Response:
-
-```bash
-[ "id": 1, "name": "Ali" },
+[
+  { "id": 1, "name": "Ali" },
   { "id": 2, "name": "Veli" }
 ]
-```
 
-## 🧠 Öğrenilenler (Notlar)
+POST /users
 
-FastAPI endpoint mantığı
+Yeni kullanıcı ekler.
 
-Pydantic schema kullanımı
+Body (Swagger veya Postman’dan):
+
+{
+  "id": 3,
+  "name": "Ayşe"
+}
+
+🧠 Öğrenilenler (Şu Ana Kadar)
+
+FastAPI nasıl ayağa kaldırılır
+
+Endpoint nedir
 
 GET / POST farkı
 
-Swagger (/docs) ile test
+Pydantic schema neden kullanılır
 
-Git commit & push workflow
+Swagger (/docs) nasıl kullanılır
 
-## 🚀 Gelecek Planları
+Fake DB mantığı (liste ile çalışma)
 
-APIRouter yapısına geçiş
+Git commit & push
+
+🛣️ Sonraki Adımlar (Yarın / Sonra)
+
+APIRouter kullanımı
+
+Router’ları dosyalara ayırma
+
+Gerçek veritabanı (SQLite / PostgreSQL)
 
 AI (Pydantic AI) entegrasyonu
 
-Ödeme sistemi (Stripe / Iyzico)
+Ödeme altyapısı (ileride)
 
-Database (PostgreSQL)
+🤍 Not
 
-Auth (JWT)
-
-## 🤲 Not
-
-Bu repo öğrenme ve gelişme amaçlıdır.
-Adım adım ilerlenmiştir, sade tutulmuştur.
-
-Elhamdulillah 🌿
-
+Bu proje öğrenme odaklıdır.
+Adım adım, sindire sindire ilerlenmektedir.
