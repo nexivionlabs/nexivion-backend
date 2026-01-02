@@ -41,7 +41,7 @@ source venv/bin/activate
 
 ## 2️⃣ Server’ı başlat
 ```bash
-icorn main:app --reload
+uvicorn main:app --reload
 ```
 Tarayıcıdan:
 
