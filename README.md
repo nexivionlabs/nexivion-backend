@@ -1,105 +1,142 @@
-Nexivion Backend 🚀
+# Nexivion Backend 🚀
 
-Bu proje, Nexivion web sitesi ve ileride diğer projeler (mobil / AI servisleri) için
-FastAPI tabanlı backend altyapısı oluşturmak amacıyla başlatılmıştır.
+Nexivion Backend, müşteri ihtiyaçlarını anlayan, analiz eden ve doğru hizmete yönlendiren
+**AI destekli bir karar motoru** üzerine inşa edilmiş modern bir FastAPI backend’idir.
 
-Amaç:
+Bu proje yalnızca CRUD yapan bir API değil;  
+**iş mantığı, karar verme ve yapay zekâ entegrasyonuna hazır bir mimari** sunar.
 
-Temiz backend mimarisi öğrenmek
+---
 
-Schema (Pydantic) mantığını sindirmek
+## 🎯 Projenin Amacı
 
-İleride AI (Pydantic AI), ödeme ve gerçek veritabanı eklemeye hazır olmak
+- Kullanıcıdan gelen metinsel talepleri almak
+- Bu talepleri anlamlandırmak
+- AI destekli kararlar üretmek
+- Müşteriyi doğru Nexivion hizmetine yönlendirmek
 
-🧱 Kullanılan Teknolojiler
+---
 
-Python 3.9+
+## 🧠 Mimari Yaklaşım
 
-FastAPI
+Proje, **clean architecture** prensipleriyle tasarlanmıştır:
 
-Pydantic
-
-Uvicorn
-
-Git / GitHub
-
-📂 Proje Yapısı (Şu An)
-nexivion-backend/
+app/
+├── main.py # Uygulama girişi
 │
-├── main.py              # Ana FastAPI uygulaması
-├── schemas/             # Pydantic schema'lar
-│   ├── __init__.py
-│   └── user.py          # User schema
+├── api/ # HTTP / API katmanı
+│ └── v1/
+│ └── users.py
 │
-├── venv/                # Virtual environment (git'e dahil değil)
-├── .gitignore
-└── README.md
+├── schemas/ # Veri sözleşmeleri (Pydantic)
+│ └── user.py
+│
+├── services/ # İş mantığı & AI karar katmanı
+│ └── ai_agent.py
+│
+├── core/ # Konfigürasyon & ayarlar
+│
+└── models/ # Veritabanı modelleri (ileride)
 
-▶️ Uygulamayı Çalıştırma
-# Virtual env aktifken
-uvicorn main:app --reload
 
+### Katmanların Sorumlulukları
 
-Tarayıcıdan:
+- **API (`api/`)**  
+  Sadece request / response yönetir.
 
-Ana endpoint:
-👉 http://127.0.0.1:8000
+- **Schemas (`schemas/`)**  
+  Veri yapıları ve sözleşmeler.
 
-Swagger (dokümantasyon):
-👉 http://127.0.0.1:8000/docs
+- **Services (`services/`)**  
+  İş kuralları ve AI karar mantığı  
+  (pydantic-ai entegrasyonuna hazır).
 
-🔗 Mevcut Endpoint’ler
-GET /users
+- **Main (`main.py`)**  
+  Router’ları birleştiren orchestrator.
 
-Tüm kullanıcıları listeler.
+---
 
-Örnek çıktı:
+## ⚙️ Kurulum
 
-[
-  { "id": 1, "name": "Ali" },
-  { "id": 2, "name": "Veli" }
-]
+### 1️⃣ Ortamı hazırla
 
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+### 2️⃣ Bağımlılıkları yükle
+
+```bash
+pip install fastapi uvicorn
+```
+
+Not: İleride: pydantic-ai, model sağlayıcıları ve ek servisler eklenecektir.
+
+### ▶️ Uygulamayı Çalıştır
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Tarayıcıdan erişim:
+
+API Docs (Swagger):
+http://127.0.0.1:8000/docs
+
+🔍 Örnek Kullanım
 POST /users
 
-Yeni kullanıcı ekler.
+Request
 
-Body (Swagger veya Postman’dan):
-
+```bash
 {
-  "id": 3,
-  "name": "Ayşe"
+  "message": "Web sitesi yaptırmak istiyorum"
 }
+```
+Response
 
-🧠 Öğrenilenler (Şu Ana Kadar)
+```bash
+{
+  "decision": "User needs a website","suggested_service": "Web Development"
 
-FastAPI nasıl ayağa kaldırılır
 
-Endpoint nedir
+}
+```
 
-GET / POST farkı
+🧩 Yapay Zekâ Katmanı
 
-Pydantic schema neden kullanılır
+AI karar mantığı şu dosyada izole edilmiştir:
 
-Swagger (/docs) nasıl kullanılır
+```bash
+app/services/ai_agent.py
+```
 
-Fake DB mantığı (liste ile çalışma)
+### Bu yapı sayesinde:
 
-Git commit & push
+- API katmanı AI detaylarını bilmez
 
-🛣️ Sonraki Adımlar (Yarın / Sonra)
+- Farklı AI modelleri kolayca entegre edilebilir
 
-APIRouter kullanımı
+- İş mantığı test edilebilir ve sürdürülebilirdir
 
-Router’ları dosyalara ayırma
+### 🛣️ Yol Haritası
 
-Gerçek veritabanı (SQLite / PostgreSQL)
+- pydantic-ai entegrasyonu
 
-AI (Pydantic AI) entegrasyonu
+- Structured AI outputs (enum / model)
 
-Ödeme altyapısı (ileride)
+- Servis & paket öneri motoru
 
-🤍 Not
+- Veritabanı entegrasyonu
 
-Bu proje öğrenme odaklıdır.
-Adım adım, sindire sindire ilerlenmektedir.
+- Authentication & kullanıcı akışları
+
+### 🤝 Katkı
+
+Bu proje, öğrenerek inşa etme yaklaşımıyla geliştirilmektedir.
+Katkılar ve öneriler memnuniyetle karşılanır.
+
+📜 Lisans
+
+Bu proje Nexivion Labs çatısı altında geliştirilmektedir.
