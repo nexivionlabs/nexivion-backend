@@ -22,21 +22,21 @@ Bu proje yalnızca CRUD yapan bir API değil;
 Proje, **clean architecture** prensipleriyle tasarlanmıştır:
 
 app/
-├── main.py # Uygulama girişi
-│
-├── api/ # HTTP / API katmanı
-│ └── v1/
-│ └── users.py
-│
-├── schemas/ # Veri sözleşmeleri (Pydantic)
-│ └── user.py
-│
-├── services/ # İş mantığı & AI karar katmanı
-│ └── ai_agent.py
-│
-├── core/ # Konfigürasyon & ayarlar
-│
-└── models/ # Veritabanı modelleri (ileride)
+  main.py # Uygulama girişi
+
+  api/ # HTTP / API katmanı
+     v1/
+     users.py
+
+  schemas/ # Veri sözleşmeleri (Pydantic)
+     user.py
+
+  services/ # İş mantığı & AI karar katmanı
+   ai_agent.py
+
+  core/ # Konfigürasyon & ayarlar
+
+  models/ # Veritabanı modelleri (ileride)
 
 
 ### Katmanların Sorumlulukları
