@@ -19,25 +19,34 @@ Bu proje yalnızca CRUD yapan bir API değil;
 
 ## 🧠 Mimari Yaklaşım
 
-Proje, **clean architecture** prensipleriyle tasarlanmıştır:
+Nexivion Backend **katmanlı + AI-first mimari** ile tasarlanmıştır.
 
-app/
-  main.py # Uygulama girişi
+### 1️⃣ Katmanlı Mimari (Layered Architecture)
 
-  api/ # HTTP / API katmanı
-     v1/
-     users.py
 
-  schemas/ # Veri sözleşmeleri (Pydantic)
-     user.py
-
-  services/ # İş mantığı & AI karar katmanı
-   ai_agent.py
-
-  core/ # Konfigürasyon & ayarlar
-
-  models/ # Veritabanı modelleri (ileride)
-
+┌──────────────────────────┐
+│ Presentation │
+│ FastAPI Routers (API) │
+│ app/api/ │
+└────────────▲─────────────┘
+│
+┌────────────┴─────────────┐
+│ Application │
+│ AI & Business Logic │
+│ app/services/ │
+└────────────▲─────────────┘
+│
+┌────────────┴─────────────┐
+│ Domain │
+│ Schemas & Contracts │
+│ app/schemas/ │
+└────────────▲─────────────┘
+│
+┌────────────┴─────────────┐
+│ Infrastructure │
+│ DB, External APIs │
+│ (future integrations) │
+└──────────────────────────┘
 
 ### Katmanların Sorumlulukları
 
