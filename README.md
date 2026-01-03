@@ -21,6 +21,8 @@ Bu repository:
 
 🧠 Architectural Approach (AI-First) | 🧠 Mimari Yaklaşım (AI-First)
 
+![CleanArchitecture](https://github.com/user-attachments/assets/d27b25d6-126d-4e48-bd1b-8275f0ffe973)
+
 ```bash
 flowchart TB
     Client --> API[FastAPI Router]
