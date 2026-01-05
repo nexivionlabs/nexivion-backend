@@ -1,8 +1,10 @@
 from pydantic import BaseModel
 
-class UserCreate(BaseModel):
-    message: str  # kullanıcının ihtiyacını anlattığı metin
+class UserBase(BaseModel):
+    name: str
 
-class UserResponse(BaseModel):
-    decision: str
-    suggested_service: str
+class UserCreate(UserBase):
+    pass
+
+class User(UserBase):
+    id: int
